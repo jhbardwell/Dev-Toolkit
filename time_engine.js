@@ -2,9 +2,9 @@ let time = {
 
   create = {
     dayTally: 0,
-    currentHour: utils.randomArray(hourRange),
+    currentHour: utils.randomArray(rangeHours),
     currentTOD: "",
-    currentDay: utils.randomArray(dayRange),
+    currentDay: utils.randomArray(rangeDays),
     currentMonth: "",
     currentSeason: "",
   },
