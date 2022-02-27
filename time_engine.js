@@ -1,42 +1,72 @@
 let time = {
 
   create = {
-    hourTally: 0,
     dayTally: 0,
     currentHour: utils.randomArray(hourRange),
     currentTOD: "",
     currentDay: utils.randomArray(dayRange),
+    currentMonth: "",
+    currentPhase: "",
     currentSeason: "",
   },
 
   update = function(){
+    dayTally();
     advanceHour();
     advanceTOD();
     advanceDay();
+    advanceMonth();
+    advancePhase();
     advanceSeason();
-    hourTally();
-    dayTally();
   },
 
   save = {
-    hourTally: time.hourTally,
     dayTally: time.dayTally,
     currentHour: time.currentHour,
     currentTOD: time.currentTOD,
     currentDay: time.currentDay,
-    currentSeason: time.currentSeason,
+    currentMonth: time.currentMonth,
+    currentPhase: time.currentPhase,
+    currentSeason: time.currentSeason
   },
 
   rangeHours = utils.rangeArray(1, 24, 1),
   rangeDays = utils.rangeArray(1, 364, 1),
-
+    
   tod = {
     MORNING: "MORNING",
     AFTERNOON: "AFTERNON",
     EVENING: "EVENING",
     LATENIGHT: "LATENIGHT",
   },
-
+   
+  month = {
+    ONE: "ONE",
+    TWO: "TWO",
+    THREE: "THREE",
+    FOUR: "FOUR",
+    FIVE: "FIVE",
+    SIX: "SIX",
+    SEVEN: "SEVEN",
+    EIGHT: "EIGHT",
+    NINE: "NINE",
+    TEN: "TEN",
+    ELEVEN: "ELEVEN",
+    TWELVE: "TWELVE",
+    THIRTEEN: "THIRTEEN"
+  },
+   
+  phase = {
+    FULL: "FULL",
+    WAXINGGIBBOUS: "WAXINGGIBBOUS",
+    FIRSTQUARTER: "FIRSTQUARTER",
+    WAXINGCRESCENT: "FIRSTQUARTER",
+    NEWMOON: "FIRSTQUARTER",
+    WANINGCRESCENT: "FIRSTQUARTER",
+    THIRDQUARTER: "FIRSTQUARTER",
+    WANINGGIBBOUS: "FIRSTQUARTER"
+  },
+    
   season = {
     SPRING: "SPRING",
     SUMMER: "SUMMER",
@@ -63,12 +93,44 @@ let time = {
   },
 
  advanceDay: function() {
+    if (time.currentDay >= 364) {
+      time.currentDay = 1};
     if (time.currentHour == 1) {
       time.currentDay += 1;
       time.dayTally +=1;
     }
   },
 
+ advanceMonth: function(){
+     if (time.currentDay >= 1 && time.currentDay < 28)
+      time.currentMonth = month.ONE;
+    else if (time.currentDay >= 29 && time.currentDay < 56)
+      time.currentMonth = month.TWO;
+    else if (time.currentDay >= 57 && time.currentDay < 84)
+      time.currentMonth = month.THREE;
+    else if (time.currentDay >= 85 && time.currentDay < 112)
+      time.currentMonth = month.FOUR;
+   else if (time.currentDay >= 57 && time.currentDay < 140)
+      time.currentMonth = month.FIVE;
+   else if (time.currentDay >= 141 && time.currentDay < 168)
+      time.currentMonth = month.SIX;
+   else if (time.currentDay >= 169 && time.currentDay < 196)
+      time.currentMonth = month.SEVEN;
+   else if (time.currentDay >= 197 && time.currentDay < 224)
+      time.currentMonth = month.EIGHT;
+   else if (time.currentDay >= 225 && time.currentDay < 252)
+      time.currentMonth = month.NINE;
+   else if (time.currentDay >= 253 && time.currentDay < 280)
+      time.currentMonth = month.TEN;
+   else if (time.currentDay >= 281 && time.currentDay < 308)
+      time.currentMonth = month.ELEVEN;
+   else if (time.currentDay >= 309 && time.currentDay < 336)
+      time.currentMonth = month.TWELVE;
+   else if (time.currentDay >= 337 && time.currentDay < 364)
+      time.currentMonth = month.TWO;
+  }
+ },
+    
  advanceSeason: function() {
     if (time.currentDay >= 31 && time.currentDay < 122)
       time.currentSeason = season.SPRING;
