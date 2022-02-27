@@ -6,7 +6,6 @@ let time = {
     currentTOD: "",
     currentDay: utils.randomArray(dayRange),
     currentMonth: "",
-    currentPhase: "",
     currentSeason: "",
   },
 
@@ -16,7 +15,6 @@ let time = {
     advanceTOD();
     advanceDay();
     advanceMonth();
-    advancePhase();
     advanceSeason();
   },
 
@@ -26,7 +24,6 @@ let time = {
     currentTOD: time.currentTOD,
     currentDay: time.currentDay,
     currentMonth: time.currentMonth,
-    currentPhase: time.currentPhase,
     currentSeason: time.currentSeason
   },
 
@@ -34,8 +31,11 @@ let time = {
   rangeDays = utils.rangeArray(1, 364, 1),
     
   tod = {
+    DAWN: "DAWN",
     MORNING: "MORNING",
+    NOON: "NOON",
     AFTERNOON: "AFTERNON",
+    DUSK: "DUSK",
     EVENING: "EVENING",
     LATENIGHT: "LATENIGHT",
   },
@@ -55,17 +55,6 @@ let time = {
     TWELVE: "TWELVE",
     THIRTEEN: "THIRTEEN"
   },
-   
-  phase = {
-    FULL: "FULL",
-    WAXINGGIBBOUS: "WAXINGGIBBOUS",
-    FIRSTQUARTER: "FIRSTQUARTER",
-    WAXINGCRESCENT: "FIRSTQUARTER",
-    NEWMOON: "FIRSTQUARTER",
-    WANINGCRESCENT: "FIRSTQUARTER",
-    THIRDQUARTER: "FIRSTQUARTER",
-    WANINGGIBBOUS: "FIRSTQUARTER"
-  },
     
   season = {
     SPRING: "SPRING",
@@ -82,11 +71,17 @@ let time = {
   },
 
   advanceTOD: function() {
-    if (time.currentHour >= 6 && time.currentHour < 12)
+    if (time.currentHour == 6)
+      {time.currentTOD = tod.DAWN;}
+    else if (time.currentHour > 6 && time.currentHour < 12)
       {time.currentTOD = tod.MORNING;}
-    else if (time.currentHour >= 12 && time.currentHour < 18)
+    else if (time.currentHour == 12)
+      {time.currentTOD = tod.NOON;}
+    else if (time.currentHour > 12 && time.currentHour < 18)
       {time.currentTOD = tod.AFTERNOON;}
-    else if (time.currentHour >= 18 && time.currentHour <= 24)
+    else if (time.currentHour == 18)
+      {time.currentTOD = tod.DUSK;}
+    else if (time.currentHour > 18 && time.currentHour <= 24)
       {time.currentTOD = tod.EVENING;}
     else if (time.currentHour >= 1 && time.currentHour < 6)
       {time.currentTOD = tod.LATENIGHT;}
