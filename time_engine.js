@@ -44,11 +44,11 @@ let time = {
     WINTER: "WINTER",
   },
 
-  advanceHour: function(hours) {
+  advanceHour: function(player.hours) {
     if (time.currentHour >= 24) {
       time.currentHour = 1};
-    time.currentHour += hours;
-    time.hourTally += hours;
+    time.currentHour += player.hours;
+    time.hourTally += player.hours;
   },
 
   advanceTOD: function() {
