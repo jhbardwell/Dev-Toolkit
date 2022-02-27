@@ -88,7 +88,7 @@ lerp: function(norm, min, max) {
 },
 
 map: function(value, sourceMin, sourceMax, destMin, destMax) {
-    return utils.lerp(utils.norm(value, sourceMin, sourceMax), destMin, destMax);
+    return utils.lerp(utils.normalize(value, sourceMin, sourceMax), destMin, destMax);
 },
 
 normalize: function(value, min, max) {
