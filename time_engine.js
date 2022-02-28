@@ -66,6 +66,7 @@ let time = {
         time.currentHour += player.hours;
         if (time.currentHour >= 24) {
             time.currentHour = 1};
+        return time.currentHour;
     },
   
     advanceTOD: function() {
@@ -84,7 +85,8 @@ let time = {
             time.currentTOD = tod.EVENING; break;
         case (time.currentHour >= 1 && time.currentHour < 6):
             time.currentTOD = tod.LATENIGHT; break
-        }
+        },
+        return time.currentTOD;
     },
   
    advanceDay: function() {
@@ -94,6 +96,8 @@ let time = {
         }
         if (time.currentDay > 364) {
              time.currentDay = 1};
+        },
+        return (time.currentDay, time.tallyGameDays);
     },
   
    advanceMonth: function(){
@@ -124,7 +128,8 @@ let time = {
             time.currentMonth = month.TWELVE; break;
         case (time.currentDay >= 337 && time.currentDay < 364):
             time.currentMonth = month.TWO; break;
-       }
+       },
+        return time.currentMonth;
     },
     
     advanceSeason: function() {
@@ -137,7 +142,8 @@ let time = {
             timeState.currentSeason = season.AUTUMN; break
         case (time.currentDay >= 304 || time.currentDay < 31):
             time.currentSeason = season.WINTER; break;
-        }
+        },
+        return time.currentSeason;
     },
 
    }
