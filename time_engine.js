@@ -64,8 +64,9 @@ let time = {
 
     advanceHour: function() {
         time.currentHour += player.hours;
-        if (time.currentHour >= 24) {
-            time.currentHour = 1};
+        if (time.currentHour > 24) {
+            difference = time.currentHour - 24
+            time.currentHour = difference};
         return time.currentHour;
     },
   
