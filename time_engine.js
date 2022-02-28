@@ -139,7 +139,7 @@ let time = {
         case (time.currentDay >= 122 && time.currentDay < 213):
             time.currentSeason = season.SUMMER; break;
         case (time.currentDay >= 213 && time.currentDay <= 304):
-            timeState.currentSeason = season.AUTUMN; break
+            time.currentSeason = season.AUTUMN; break
         case (time.currentDay >= 304 || time.currentDay < 31):
             time.currentSeason = season.WINTER; break;
         },
