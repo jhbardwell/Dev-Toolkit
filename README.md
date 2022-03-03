@@ -1,2 +1,2 @@
 # Dev-Toolkit
-A motley collection of template engine system development tools
+A motley collection of system development tools
